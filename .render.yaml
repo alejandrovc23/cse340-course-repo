@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: cse340-course-repo
+    env: node
+    root: .
+    buildCommand: npm install
+    startCommand: npm start
