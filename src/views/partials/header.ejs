@@ -13,9 +13,14 @@
 <body>
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/organizations">Organizations</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/categories">Categories</a></li>
+            <li><a href="/" class="<%= title === 'Home' ? 'active' : '' %>"
+                    aria-current="<%= title === 'Home' ? 'page' : 'false' %>">Home</a></li>
+            <li><a href="/organizations" class="<%= title === 'Our Partner Organizations' ? 'active' : '' %>"
+                    aria-current="<%= title === 'Our Partner Organizations' ? 'page' : 'false' %>">Organizations</a>
+            </li>
+            <li><a href="/projects" class="<%= title === 'Service Projects' ? 'active' : '' %>"
+                    aria-current="<%= title === 'Service Projects' ? 'page' : 'false' %>">Projects</a></li>
+            <li><a href="/categories" class="<%= title === 'Service Project Categories' ? 'active' : '' %>"
+                    aria-current="<%= title === 'Service Project Categories' ? 'page' : 'false' %>">Categories</a></li>
         </ul>
     </nav>
