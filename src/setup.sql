@@ -46,3 +46,49 @@ VALUES
     (3, 'School Supply Drive', 'Collect and distribute school supplies to students in need.', 'Community Center', '2026-07-22'),
     (3, 'Neighborhood Clean Sweep', 'Help clean neighborhood streets and improve community spaces.', 'Hillview District', '2026-08-01'),
     (3, 'Family Wellness Fair', 'Support a free wellness event with activities and resources.', 'Parkside Pavilion', '2026-08-15');
+
+-- ========================================
+-- Category Table
+-- ========================================
+CREATE TABLE IF NOT EXISTS category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(120) NOT NULL UNIQUE
+);
+
+-- ========================================
+-- Project Category Join Table
+-- ========================================
+CREATE TABLE IF NOT EXISTS project_category (
+    project_id INT NOT NULL REFERENCES project(project_id),
+    category_id INT NOT NULL REFERENCES category(category_id),
+    PRIMARY KEY(project_id, category_id)
+);
+
+-- Sample category data
+INSERT INTO category (name)
+VALUES
+    ('Environmental'),
+    ('Educational'),
+    ('Community Service'),
+    ('Health and Wellness')
+ON CONFLICT DO NOTHING;
+
+-- Sample project-category associations
+INSERT INTO project_category (project_id, category_id)
+VALUES
+    (1, 1),
+    (2, 1),
+    (3, 1),
+    (4, 1),
+    (5, 4),
+    (6, 1),
+    (7, 1),
+    (8, 1),
+    (9, 1),
+    (10, 1),
+    (11, 2),
+    (12, 2),
+    (13, 2),
+    (14, 3),
+    (15, 3)
+ON CONFLICT DO NOTHING;
