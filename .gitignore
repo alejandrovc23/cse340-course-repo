@@ -145,4 +145,5 @@ vite.config.ts.timestamp-*
 
 # Learning activite
 node_modules/
+.envrepo-mirror.git/
 .env
