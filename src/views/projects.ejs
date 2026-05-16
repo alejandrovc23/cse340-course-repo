@@ -5,11 +5,28 @@
             <%= title %>
         </h1>
         <h2>Upcoming Service Projects</h2>
-        <ul>
-            <li>Park Cleanup - Join us to clean up local parks and make them beautiful!</li>
-            <li>Food Drive - Help collect and distribute food to those in need.</li>
-            <li>Community Tutoring - Volunteer to tutor students in various subjects.</li>
-        </ul>
+
+        <% if (projects && projects.length) { %>
+            <ul>
+                <% projects.forEach(project=> { %>
+                    <% const formattedDate=project.date ? new Date(project.date).toLocaleDateString('en-US', {
+                        month: 'long' , day: 'numeric' , year: 'numeric' }) : 'TBD' ; %>
+                        <li>
+                            Date: <%= formattedDate %> - <strong>
+                                    <%= project.title %>
+                                </strong> (<%= project.organization_name %>)
+                                    <p>
+                                        <%= project.description %>
+                                    </p>
+                                    <p><em>
+                                            <%= project.location %>
+                                        </em></p>
+                        </li>
+                        <% }) %>
+            </ul>
+            <% } else { %>
+                <p>No service projects were found.</p>
+                <% } %>
     </main>
 
     <%- include('partials/footer') %>
