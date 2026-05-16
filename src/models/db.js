@@ -20,20 +20,17 @@ if (!connectionString) {
 
 const pool = new Pool({
     connectionString,
-    ssl: true
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 /**
  * Common SSL Issue:
  *
- * You may encounter SSL connection errors depending on your operating system, Node.js
- * version, or PostgreSQL server settings. If you have confirmed your credentials are
- * correct but still see SSL errors, try updating the 'ssl' property in the Pool
- * configuration above to:
- *
- * ssl: {
- *     rejectUnauthorized: false
- * }
+ * Render Postgres uses SSL and often presents a self-signed certificate.
+ * The configuration above disables certificate validation so the connection
+ * can succeed in this environment.
  */
 
 /**
